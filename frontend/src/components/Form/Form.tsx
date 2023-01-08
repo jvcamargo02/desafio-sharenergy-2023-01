@@ -1,6 +1,6 @@
-import { Button, Link } from '@mui/material'
-import { isDisabled } from '@testing-library/user-event/dist/utils'
+import { Button } from '@mui/material'
 import styled from 'styled-components'
+import Links from '../Link'
 
 import Logo from '../Logo'
 
@@ -18,9 +18,7 @@ export default function Forms({ children, formOptions, onSubmit }: { children: R
     <Logo />
             {children}
             <StyledButton disabled={formOptions.isDisabled} fullWidth type="submit">{formOptions.buttonLabel}</StyledButton>
-            <Link href={formOptions.href} underline="hover" color="inherit">
-                {formOptions.linkLabel}
-            </Link>
+            <Links href={formOptions.href}>{formOptions.linkLabel}</Links>
     </Form>
   )
 }
@@ -32,10 +30,17 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 300px;
   padding: 50px;
   gap: 15px;
   border-radius: 10px;
   background-color: #fff;
+
+    @media (max-width: 600px) {
+        width: 100vw;
+        box-sizing: border-box;
+        border-radius: 0;
+    }
 `
 
 const StyledButton = styled(Button)`

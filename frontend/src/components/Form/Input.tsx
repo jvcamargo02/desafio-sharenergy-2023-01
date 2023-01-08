@@ -10,7 +10,7 @@ export default function Input({
     onChange = (e: React.ChangeEvent<HTMLInputElement>) => {},
 }) {
     return (
-            <TextField variant="outlined" label={label} required defaultValue={defaultValue} value={value} onChange={onChange}/>
+            <TextField variant="outlined" label={label} required defaultValue={defaultValue} value={value} onChange={onChange} fullWidth/>
     );
 }
 
