@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { StyledContainer as Container } from '../Container';
+import { StyledContainer as Container } from "../Container";
 
-export default function Dashboard({ children }: { children: React.ReactNode}) {
+export default function Dashboard({ children }: { children: React.ReactNode }) {
     return (
         <Page>
             <StyledContainer width="80%" height="100%">
@@ -28,22 +28,22 @@ const StyledContainer: any = styled(Container)`
 `;
 
 const Page = styled.div`
-height: 90vh;
-width: 100%;
-padding: 20px;
-display: flex;
-align-items: center;
-flex-direction: column;
+    height: 90vh;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
-& > *:not(:last-child) {
-  margin-bottom: 24px;
-}
-& > * {
-  text-align: center;
-}
-@media (max-width: 600px) {
-  padding: 0;
-  height: 100vh;  
-  max-height: -webkit-fill-available !important;
-}
+    & > *:not(:last-child) {
+        margin-bottom: 24px;
+    }
+    & > * {
+        text-align: center;
+    }
+    @media (max-width: 600px) {
+        padding: 0;
+        height: 100vh;
+        max-height: -webkit-fill-available !important;
+    }
 `;

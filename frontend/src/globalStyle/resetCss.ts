@@ -26,6 +26,8 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
+
 ol, ul {
 	list-style: none;
 }
@@ -53,6 +55,43 @@ body {
     background: rgb(223,229,101);
     background: linear-gradient(270deg, rgba(223,229,101,1) 0%, rgba(27,162,161,1) 65%);
 	font-family: var(--font);
+
+	#demo-simple-select-label{
+		background: #fff;
+    	padding: 3px;
+	}
+
+	.css-whebh7-MuiInputBase-root-MuiInput-root{
+		border-bottom: none;
+
+		&::before{
+			border-bottom: none;
+		}
+
+		&::after{
+			border-bottom: none;
+		}
+
+		&:hover{
+			border-bottom: none;
+		}
+
+		&:hover::before{
+			border-bottom: none;
+		}
+
+		&:hover::after{
+			border-bottom: none;
+		}
+
+		&:focus::before{
+			border-bottom: none;
+		}
+
+		&:focus::after{
+			border-bottom: none;
+		}
+	}
 }
 button{
 	font-family: var(--font);

@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Logo() {
+export default function Title({ children }: { children: React.ReactNode}) {
     return (
         <Container>
-            <h1>JOÃO</h1>
-            <h1>CAMARGO</h1>
+            {children}
         </Container>
     );
 }
@@ -13,6 +12,12 @@ export default function Logo() {
 const Container = styled.div`
     display: flex;
     font-weight: 700;
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     h1 {
         font-size: 2rem;
@@ -23,8 +28,6 @@ const Container = styled.div`
 
         &:last-child {
             color: rgba(27, 162, 161, 0.6);
-            margin-left: calc(2rem * -0.75);
-            margin-top: 1.5px;
         }
     }
 `;
