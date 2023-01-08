@@ -24,7 +24,7 @@ const Container = styled.div`
         &:last-child {
           color: rgba(27, 162, 161, 0.6);
           margin-left: calc(2rem * -0.75);
-          margin-top: 2px;
+          margin-top: 1.5px;
         }
     }
 
