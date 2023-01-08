@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 import { StyledContainer as Container } from '../Container';
 
-export default function Dashboard({ children, background }: { children: React.ReactNode, background: string }) {
+export default function Dashboard({ children }: { children: React.ReactNode}) {
     return (
-        <Page background={background}>
-            <StyledContainer width="90%" height="100%">
+        <Page>
+            <StyledContainer width="80%" height="100%">
                 {children}
             </StyledContainer>
         </Page>
@@ -27,16 +27,14 @@ const StyledContainer: any = styled(Container)`
     }
 `;
 
-const Page = styled.div< { background: string } >`
-background: ${props => props.background};
-background-size: cover;
+const Page = styled.div`
 height: 90vh;
 width: 100%;
 padding: 20px;
 display: flex;
 align-items: center;
 flex-direction: column;
-font-size: 48px;
+
 & > *:not(:last-child) {
   margin-bottom: 24px;
 }
