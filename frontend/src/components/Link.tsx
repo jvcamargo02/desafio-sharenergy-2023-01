@@ -8,6 +8,13 @@ function Links({ children, href }: { children: React.ReactNode; href: string }) 
 export default Links;
 
 const StyledLink = styled(Link)`
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 5px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-decoration: none;
     color: #222;
 

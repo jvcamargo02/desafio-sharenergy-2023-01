@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { ChangeEvent } from "react";
+import React from "react";
 import Loading from "../../../components/Loading";
 import Search from "../../../components/Search";
 import Title from "../../../components/Title";
@@ -18,6 +18,7 @@ function RandomUser() {
     const [filteredList, setFilteredList] = React.useState<IRandomUser[]>([]);
     const [limit, setLimit] = React.useState(100);
     const [search, setSearch] = React.useState("");
+    const [page, setPage] = React.useState(1);
 
     React.useEffect(() => {
         axios
@@ -25,7 +26,7 @@ function RandomUser() {
             .then((response) => {
                 setRandomUser(response.data.results);
 
-                if(search === "") setFilteredList(response.data.results);
+                if (search === "") setFilteredList(response.data.results);
             });
     }, []);
 
@@ -37,9 +38,17 @@ function RandomUser() {
                 <h1>Random</h1>
                 <h1>User</h1>
             </Title>
-            <Search limit={limit} setLimit={setLimit} search={search} setSearch={setSearch} list={randomUser} setList={setFilteredList}/>
-            <UserList filteredList={filteredList} />
-        </> 
+            <Search
+                limit={limit}
+                setLimit={setLimit}
+                search={search}
+                setSearch={setSearch}
+                list={randomUser}
+                setList={setFilteredList}
+                setPage={setPage}
+            />
+            <UserList filteredList={filteredList} limit={limit} page={page} setPage={setPage} />
+        </>
     );
 }
 

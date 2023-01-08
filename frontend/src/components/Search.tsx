@@ -13,6 +13,7 @@ export default function Search({
     setSearch,
     list,
     setList,
+    setPage,
 }: {
     limit: number;
     setLimit: (limit: number) => void;
@@ -20,7 +21,8 @@ export default function Search({
     setSearch: (search: string) => void;
     list: IRandomUser[];
     setList: (list: IRandomUser[]) => void;
-    }) {
+    setPage: (page: number) => void;
+}) {
     function isSearched(searchTerm: string, limit: number) {
         return function (userList: IRandomUser[]) {
             setSearch(searchTerm);
@@ -29,7 +31,6 @@ export default function Search({
 
             for (let i = 0; i < userList.length; i++) {
                 const user = userList[i];
-                if (filteredList.length === limit) break;
 
                 if (
                     user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -67,22 +68,25 @@ export default function Search({
                 }
             />
             <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-                <BiSearchAlt />
+                <BiSearchAlt onClick={() => setList(isSearched(search, limit)(list) ?? list)} />
             </IconButton>
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
             <FormControl sx={{ width: 125 }} variant="outlined">
-                <InputLabel id="demo-simple-select-label">Quantidade</InputLabel>
+                <InputLabel id="demo-simple-select-label">Limite</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={limit}
                     label="Limite"
-                    onChange={(e: SelectChangeEvent<number>): any =>
-                        setList(isSearched(search, +e.target.value)(list) ?? list)
-                    }
+                    onChange={(e: SelectChangeEvent<number>): any => {
+                        setList(isSearched(search, +e.target.value)(list) ?? list);
+                        setPage(1);
+                    }}
                 >
                     <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={25}>25</MenuItem>
                     <MenuItem value={50}>50</MenuItem>
+                    <MenuItem value={75}>75</MenuItem>
                     <MenuItem value={100}>100</MenuItem>
                 </Select>
             </FormControl>
