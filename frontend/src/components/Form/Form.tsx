@@ -1,17 +1,25 @@
-import { Button, FormGroupProps, Link } from '@mui/material'
+import { Button, Link } from '@mui/material'
+import { isDisabled } from '@testing-library/user-event/dist/utils'
 import styled from 'styled-components'
 
 import Logo from '../Logo'
 
-export default function Forms({ children, buttonLabel, linkLabel, href, onSubmit }: { children: React.ReactNode, buttonLabel: string, linkLabel: string, href: string, onSubmit: (event: React.FormEvent<HTMLFormElement>) => void}) {
-    console.log(onSubmit)
+interface IFormOptions {
+    linkLabel: string
+    href: string
+    buttonLabel: string | React.ReactNode
+    isDisabled?: boolean
+}
+
+export default function Forms({ children, formOptions, onSubmit }: { children: React.ReactNode, formOptions: IFormOptions, onSubmit: (e: React.FormEvent<HTMLFormElement>) => void }) {
+    
     return (
         <Form onSubmit={onSubmit}>
     <Logo />
             {children}
-            <StyledButton fullWidth type="submit">{buttonLabel}</StyledButton>
-            <Link href={href} underline="hover" color="inherit">
-                {linkLabel}
+            <StyledButton disabled={formOptions.isDisabled} fullWidth type="submit">{formOptions.buttonLabel}</StyledButton>
+            <Link href={formOptions.href} underline="hover" color="inherit">
+                {formOptions.linkLabel}
             </Link>
     </Form>
   )
