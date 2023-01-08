@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import Forms from '../components/Form/Form';
 import Input from '../components/Form/Input'
@@ -13,6 +14,7 @@ export default function LoginPage() {
     buttonLabel: 'Entrar',
     isDisabled: false
   })
+  const navigate = useNavigate();
   
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -24,6 +26,9 @@ export default function LoginPage() {
     console.log(email
       , password
     )
+
+    navigate('/dashboard/random-user')
+    
   }
 
   return (
