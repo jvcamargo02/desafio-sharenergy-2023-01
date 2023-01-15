@@ -18,6 +18,6 @@ export class AuthController {
 
   @Post('login')
   login(@Body() loginAuthDto: LoginAuthDto) {
-    return this.authService.login(loginAuthDto);
+    return this.authService.findOne(loginAuthDto);
   }
 }
