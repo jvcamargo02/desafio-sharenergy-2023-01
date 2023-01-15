@@ -39,8 +39,8 @@ export default function NavigationBar() {
                 </NavigationButton>
             </Link>
 
-            <Link to="/dashboard/random-dog">
-                <NavigationButton active={isActive("/dashboard/random-dog")}>
+            <Link to="/dashboard/clients">
+                <NavigationButton active={isActive("/dashboard/teste")}>
                     <CgUserList />
                     <span>Lista De Clientes</span>
                 </NavigationButton>

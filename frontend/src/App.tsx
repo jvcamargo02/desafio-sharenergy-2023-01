@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import HttpCatsApi from "./pages/Dashboard/HTTPCatsApi/Index";
 
 import RandomUser from "./pages/Dashboard/RandomUserApi";
+import RandomDog from "./pages/Dashboard/RandomDog/Index";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -27,6 +28,7 @@ function App() {
                     >
                         <Route path="random-user" element={<RandomUser />} />
                         <Route path="http-cats" element={<HttpCatsApi />} />
+                        <Route path="random-dog" element={<RandomDog />} />
                         <Route index path="*" element={<Navigate to="/dashboard/random-user" />} />
                     </Route>
                     <Route path="*" element={<NotFoundPage />} />

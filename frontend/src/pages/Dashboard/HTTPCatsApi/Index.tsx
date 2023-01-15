@@ -1,6 +1,8 @@
-import { Paper } from "@mui/material";
 import React, { useEffect } from "react";
 import styled from "styled-components";
+
+import PaperMui from "../../../components/PaperMui";
+import ResultBox from "../../../components/ResultBox";
 import SearchInput from "../../../components/SearchInput";
 import Title from "../../../components/Title";
 
@@ -20,21 +22,9 @@ function HttpCatsApi() {
                 <h1>HTTP</h1>
                 <h1>Cats</h1>
             </Title>
-            <Paper
-                component="form"
-                sx={{
-                    p: "2px 4px",
-                    display: "flex",
-                    alignItems: "center",
-                    maxwidth: 400,
-                    width: "60%",
-                    margin: "0 auto",
-                    backgroundColor: `${paperBackground}`,
-                }}
-                variant="outlined"
-            >
+            <PaperMui paperBackground={paperBackground}>
                 <SearchInput search={search} setSearch={setSearch} placeholder="Buscar erro" type="number"/>
-            </Paper>
+            </PaperMui>
             <ResultBox>
                 {search.match(/^[0-9]{3}$/g) === null && search.length > 3 ? (
                     <StyledTitle>
@@ -61,20 +51,6 @@ function HttpCatsApi() {
 }
 
 export default HttpCatsApi;
-
-const ResultBox = styled.div`
-    margin: 25px auto;
-    height: 65%;
-    background-color: rgba(27, 162, 161, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-
-    img {
-        max-height: 100%;
-    }
-`;
 
 const StyledTitle = styled.div`
     display: flex;

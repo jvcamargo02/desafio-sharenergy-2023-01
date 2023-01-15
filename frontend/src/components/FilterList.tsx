@@ -1,8 +1,8 @@
-import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { IRandomUser } from "../pages/Dashboard/RandomUserApi";
 import SearchInput from "./SearchInput";
+import PaperMui from "./PaperMui";
 
 export default function FilterList({
     limit,
@@ -47,18 +47,7 @@ export default function FilterList({
     }
 
     return (
-        <Paper
-            component="form"
-            sx={{
-                p: "2px 4px",
-                display: "flex",
-                alignItems: "center",
-                maxwidth: 400,
-                width: "60%",
-                margin: "0 auto",
-            }}
-            variant="outlined"
-        >
+        <PaperMui>
             <SearchInput search={search} setSearch={setListAndPage} />
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
             <FormControl sx={{ width: 125 }} variant="outlined">
@@ -80,6 +69,6 @@ export default function FilterList({
                     <MenuItem value={100}>100</MenuItem>
                 </Select>
             </FormControl>
-        </Paper>
+        </PaperMui>
     );
 }
