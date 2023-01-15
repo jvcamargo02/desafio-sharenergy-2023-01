@@ -3,12 +3,17 @@ import { IsEmail, IsNotEmpty, IsString, } from 'class-validator';
 import { CreateAuthDto } from './create-auth.dto';
 
 export class LoginAuthDto extends PartialType(CreateAuthDto) {
-    @ApiProperty()
+    @ApiProperty({
+        description: 'Nome de usuário do administrador',
+        example: 'joao.silva',
+    })
     @IsString()
     @IsNotEmpty()
     username: string;
 
-    @ApiProperty()
+    @ApiProperty({
+        description: 'Senha do administrador',
+    })
     @IsString()
     @IsNotEmpty()
     password: string;

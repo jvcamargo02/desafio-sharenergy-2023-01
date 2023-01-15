@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { ObjectId } from "mongodb";
 
 export type IClient = {
     name: string;
@@ -14,6 +15,8 @@ export type ClientDocument = Client & Document;
 
 @Schema()
 export class Client {
+
+    _id: ObjectId;
     
     @Prop({ required: true })
     name: string;

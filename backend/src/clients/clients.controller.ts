@@ -1,4 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { ClientsService } from './clients.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
@@ -8,27 +18,70 @@ export class ClientsController {
   constructor(private readonly clientsService: ClientsService) {}
 
   @Post()
-  create(@Body() createClientDto: CreateClientDto) {
-    return this.clientsService.create(createClientDto);
+  async create(@Body() createClientDto: CreateClientDto) {
+    try {
+      return await this.clientsService.create(createClientDto);
+    } catch (error) {
+      throw new HttpException( error.message ??
+        'Internal Server Error', error.status ??
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   @Get()
-  findAll() {
-    return this.clientsService.findAll();
+  async findAll() {
+    try {
+      return await this.clientsService.findAll();
+    } catch (error) {
+      throw new HttpException( error.message ??
+        'Internal Server Error', error.status ??
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clientsService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    try {
+      return await this.clientsService.findOne(id);
+    } catch (error) {
+      throw new HttpException( error.message ??
+        'Internal Server Error', error.status ??
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
-    return this.clientsService.update(+id, updateClientDto);
+  async update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
+    try {
+      await this.clientsService.update(id, updateClientDto);
+
+      return {
+        message: 'Client updated successfully',
+      };
+    } catch (error) {
+      throw new HttpException( error.message ??
+        'Internal Server Error', error.status ??
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clientsService.remove(+id);
+  async remove(@Param('id') id: string) {
+    try {
+      await this.clientsService.remove(id);
+
+      return {
+        message: 'Client deleted successfully',
+      };
+    } catch (error) {
+      throw new HttpException( error.message ??
+        'Internal Server Error', error.status ??
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 }
