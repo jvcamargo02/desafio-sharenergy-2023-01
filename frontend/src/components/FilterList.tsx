@@ -1,12 +1,10 @@
-import React from "react";
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import { BiSearchAlt } from "react-icons/bi";
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { IRandomUser } from "../pages/Dashboard/RandomUserApi";
+import SearchInput from "./SearchInput";
 
-export default function Search({
+export default function FilterList({
     limit,
     setLimit,
     search,
@@ -44,6 +42,10 @@ export default function Search({
         };
     }
 
+    function setListAndPage(searchTerm: string, limitNum = limit, userList = list) {
+        setList(isSearched(searchTerm, limit)(list) ?? list);
+    }
+
     return (
         <Paper
             component="form"
@@ -57,19 +59,7 @@ export default function Search({
             }}
             variant="outlined"
         >
-            <TextField
-                variant="standard"
-                sx={{ ml: 1, flex: 1 }}
-                placeholder="Search User"
-                inputProps={{ "aria-label": "search user" }}
-                value={search}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    setList(isSearched(e.target.value, limit)(list) ?? list)
-                }
-            />
-            <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-                <BiSearchAlt onClick={() => setList(isSearched(search, limit)(list) ?? list)} />
-            </IconButton>
+            <SearchInput search={search} setSearch={setListAndPage} />
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
             <FormControl sx={{ width: 125 }} variant="outlined">
                 <InputLabel id="demo-simple-select-label">Limite</InputLabel>

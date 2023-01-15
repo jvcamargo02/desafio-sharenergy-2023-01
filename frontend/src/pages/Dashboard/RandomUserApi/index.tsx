@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import Loading from "../../../components/Loading";
-import Search from "../../../components/Search";
+import Search from "../../../components/FilterList";
 import Title from "../../../components/Title";
 import UserList from "../../../components/UserList/Index";
 
