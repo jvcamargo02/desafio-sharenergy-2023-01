@@ -1,8 +1,6 @@
 import { Paper } from "@mui/material";
-import axios from "axios";
-import React, { ComponentElement, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { JsxElement } from "typescript";
 import SearchInput from "../../../components/SearchInput";
 import Title from "../../../components/Title";
 
@@ -35,7 +33,7 @@ function HttpCatsApi() {
                 }}
                 variant="outlined"
             >
-                <SearchInput search={search} setSearch={setSearch} placeholder="Buscar erro" />
+                <SearchInput search={search} setSearch={setSearch} placeholder="Buscar erro" type="number"/>
             </Paper>
             <ResultBox>
                 {search.match(/^[0-9]{3}$/g) === null && search.length > 3 ? (

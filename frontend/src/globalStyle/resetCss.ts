@@ -49,12 +49,14 @@ table {
     --negative-color: #c70000; 
     --logo-font: 'Saira Stencil One', cursive;
 	--font: 'Raleway', sans-serif;
+	
 }
 body {
 	line-height: 1;
     background: rgb(223,229,101);
     background: linear-gradient(270deg, rgba(223,229,101,1) 0%, rgba(27,162,161,1) 65%);
 	font-family: var(--font);
+	overflow-x: hidden;
 
 	#demo-simple-select-label{
 		background: #fff;

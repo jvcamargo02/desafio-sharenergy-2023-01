@@ -2,10 +2,11 @@ import { IconButton, TextField } from "@mui/material";
 import React from "react";
 import { BiSearchAlt } from "react-icons/bi";
 
-function SearchInput({ search, setSearch, placeholder = "Buscar usuário" }: {
+function SearchInput({ search, setSearch, placeholder = "Buscar usuário", type = "text" }: {
     search: string;
     setSearch: (search: string) => void;
     placeholder?: string;
+    type?: "text" | "number";
   }) {
     return (
         <>
@@ -16,7 +17,7 @@ function SearchInput({ search, setSearch, placeholder = "Buscar usuário" }: {
                 inputProps={{ "aria-label": "search user" }}
                 value={search}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
-                type="number"
+                type={ type === "number" ? "number" : "text"}
             />
             <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
                 <BiSearchAlt onClick={() => setSearch(search)} />
