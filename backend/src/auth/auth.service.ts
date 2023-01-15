@@ -80,6 +80,7 @@ export class AuthService {
   async generateToken(user: User) {
     const secret: string = process.env.JWT_SECRET;
     const payload = {
+      id: user._id,
       name: user.name,
       username: user.username
     };
@@ -89,5 +90,23 @@ export class AuthService {
     };
   }
 
+  async validateToken(token: string) {
+    const secret: string = process.env.JWT_SECRET;
+    
+
+    try {
+      const payload = await jwt.verify(token, secret);
+      const user = await this.userModel.findById(payload.id).exec();
+  
+      if (!user) {
+        throw new HttpException('Token is expired or invalid', HttpStatus.UNAUTHORIZED);
+      }
+  
+      return user;
+    } catch (error) {
+      throw new HttpException('Token is expired or invalid', HttpStatus.UNAUTHORIZED);
+    }
+
+  }
 
 }

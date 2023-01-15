@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { ObjectId } from "mongodb";
 
 export type IUser = {
     name: string;
@@ -11,6 +12,8 @@ export type UserDocument = User & Document;
 @Schema()
 export class User {
     
+    _id: ObjectId;
+
     @Prop({ required: true })
     name: string;
 
